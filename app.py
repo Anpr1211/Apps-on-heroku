@@ -3,7 +3,8 @@ import os
 from random import randint
 
 import folium
-
+import plotly.plotly as py
+from plotly.graph_objs import *
 import flask
 import dash
 from dash.dependencies import Input, Output, State, Event
