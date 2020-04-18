@@ -4,7 +4,6 @@ import dash_html_components as html
 import folium
 
 app = dash.Dash(__name__)
-server = app.server()
 
 app.layout = html.Div([
     html.H1("Map"),
@@ -13,4 +12,4 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run()
