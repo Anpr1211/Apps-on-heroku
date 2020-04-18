@@ -7,7 +7,7 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H1("Map"),
-    html.Iframe(id='map', srcDoc=open("COVID19_World_map.html", 'r').read(), width="100%",   height="600")
+    html.Iframe(id='map', srcDoc=open("https://raw.githubusercontent.com/Anpr1211/Apps-on-heroku/master/COVID19_World_map.html", 'r').read(), width="100%",   height="600")
 
 ])
 
