@@ -3,7 +3,7 @@ import os
 from random import randint
 
 import folium
-import plotly.plotly as py
+import chart-studio.plotly as py
 from plotly.graph_objs import *
 import flask
 import dash
