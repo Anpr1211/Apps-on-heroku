@@ -1,27 +1,28 @@
-# Import required libraries
 import os
-from random import randint
-
-import folium
-import chart_studio.plotly as py
-from plotly.graph_objs import *
-import flask
 import dash
-from dash.dependencies import Input, Output, State, Event
 import dash_core_components as dcc
 import dash_html_components as html
 
-server = flask.Flask(__name__)
-server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
-app = dash.Dash(__name__, server=server)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+server = app.server
 
 app.layout = html.Div([
-    html.H1("Map"),
-    html.Iframe(id='map', src="https://raw.githubusercontent.com/Anpr1211/Apps-on-heroku/master/COVID19_World_map.html", width="100%",   height="600")
-
+    html.H2('Hello World'),
+    dcc.Dropdown(
+        id='dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='display-value')
 ])
 
+@app.callback(dash.dependencies.Output('display-value', 'children'),
+              [dash.dependencies.Input('dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
 
-# Run the Dash app
 if __name__ == '__main__':
-    app.server.run(debug=True, threaded=True)
+    app.run_server(debug=True)
